@@ -1,0 +1,63 @@
+############# train @ Fri Mar 23 17:59:53 CET 2018 GPUS=3  HOST=ssaling11 PWD=/home/michon/projects/VarDial2018/to_export/multi_input_modular
+/home/michon/anaconda2/envs/py35/lib/python3.5/site-packages/h5py/__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Loading data
+Data Configurations loaded
+Loading data
+(13806, 8)
+(1509, 8)
+EGY    3085
+LAV    2940
+NOR    2866
+GLF    2707
+MSA    2208
+Name: Class, dtype: int64
+NOR    346
+LAV    327
+EGY    297
+MSA    280
+GLF    259
+Name: Class, dtype: int64
+Loading vocabularies
+Words
+48244 48244
+Phones
+45 45
+39 39
+61 61
+51 51
+Generating ids
+Preprocessing data
+Padding character sequences
+(13806, 6830)
+Padding phone sequences
+(13806, 5885) (13806, 7329) (13806, 6436) (13806, 6837)
+Turning labels in one-hot vectors
+(13806, 5)
+Taking ready-made acoustic embeddings
+(13806, 600)
+Padding character sequences
+(1509, 6830)
+Padding phone sequences
+(1509, 5885) (1509, 7329) (1509, 6436) (1509, 6837)
+Turning labels in one-hot vectors
+(1509, 5)
+Taking ready-made acoustic embeddings
+(1509, 600)
+MultiInputCharCNN Configurations loaded
+Building the model
+Traceback (most recent call last):
+  File "main.py", line 156, in <module>
+    data_config=data_config)
+  File "/home/michon/projects/VarDial2018/to_export/multi_input_modular/models/multi_input_concat_before_conv.py", line 79, in __init__
+    self._build_model()
+  File "/home/michon/projects/VarDial2018/to_export/multi_input_modular/models/multi_input_concat_before_conv.py", line 115, in _build_model
+    l_concat = Concatenate()([embedding,embed_input])
+  File "/home/michon/anaconda2/envs/py35/lib/python3.5/site-packages/keras/engine/topology.py", line 594, in __call__
+    self.build(input_shapes)
+  File "/home/michon/anaconda2/envs/py35/lib/python3.5/site-packages/keras/layers/merge.py", line 354, in build
+    'Got inputs shapes: %s' % (input_shape))
+ValueError: A `Concatenate` layer requires inputs with matching shapes except for the concat axis. Got inputs shapes: [(None, 6830, 32), (None, 600)]
+Closing remaining open files:data/vardial2018/dataset.h5...done
+############# train: DONE @ Fri Mar 23 18:00:04 CET 2018

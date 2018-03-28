@@ -1,0 +1,283 @@
+Loading data
+Data Configurations loaded
+Loading data
+(48, 8)
+(49, 8)
+LAV    15
+EGY    10
+NOR     8
+MSA     8
+GLF     7
+Name: Class, dtype: int64
+LAV    14
+NOR    11
+MSA     9
+GLF     8
+EGY     7
+Name: Class, dtype: int64
+Loading vocabularies
+Words
+1786 1786
+Phones
+45 45
+38 38
+53 53
+50 50
+Generating ids
+Preprocessing data
+Padding character sequences
+(48, 1018)
+Padding phone sequences
+(48, 1031) (48, 1365) (48, 1119) (48, 1268)
+Turning labels in one-hot vectors
+(48, 5)
+Taking ready-made acoustic embeddings
+(48, 600)
+Padding character sequences
+(49, 1018)
+Padding phone sequences
+(49, 1031) (49, 1365) (49, 1119) (49, 1268)
+Turning labels in one-hot vectors
+(49, 5)
+Taking ready-made acoustic embeddings
+(49, 600)
+MultiInputCharCNN Configurations loaded
+Building the model
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+sent_input (InputLayer)         (None, 1018)         0                                            
+__________________________________________________________________________________________________
+phone_CZ_input (InputLayer)     (None, 1031)         0                                            
+__________________________________________________________________________________________________
+phone_EN_input (InputLayer)     (None, 1365)         0                                            
+__________________________________________________________________________________________________
+phone_HU_input (InputLayer)     (None, 1119)         0                                            
+__________________________________________________________________________________________________
+phone_RU_input (InputLayer)     (None, 1268)         0                                            
+__________________________________________________________________________________________________
+embedding_1 (Embedding)         (None, 1018, 64)     6464        sent_input[0][0]                 
+__________________________________________________________________________________________________
+embedding_2 (Embedding)         (None, 1031, 64)     2944        phone_CZ_input[0][0]             
+__________________________________________________________________________________________________
+embedding_3 (Embedding)         (None, 1365, 64)     2496        phone_EN_input[0][0]             
+__________________________________________________________________________________________________
+embedding_4 (Embedding)         (None, 1119, 64)     3456        phone_HU_input[0][0]             
+__________________________________________________________________________________________________
+embedding_5 (Embedding)         (None, 1268, 64)     3264        phone_RU_input[0][0]             
+__________________________________________________________________________________________________
+zero_padding1d_1 (ZeroPadding1D (None, 1022, 64)     0           embedding_1[0][0]                
+__________________________________________________________________________________________________
+zero_padding1d_2 (ZeroPadding1D (None, 1026, 64)     0           embedding_1[0][0]                
+__________________________________________________________________________________________________
+zero_padding1d_3 (ZeroPadding1D (None, 1035, 64)     0           embedding_2[0][0]                
+__________________________________________________________________________________________________
+zero_padding1d_4 (ZeroPadding1D (None, 1039, 64)     0           embedding_2[0][0]                
+__________________________________________________________________________________________________
+zero_padding1d_5 (ZeroPadding1D (None, 1369, 64)     0           embedding_3[0][0]                
+__________________________________________________________________________________________________
+zero_padding1d_6 (ZeroPadding1D (None, 1373, 64)     0           embedding_3[0][0]                
+__________________________________________________________________________________________________
+zero_padding1d_7 (ZeroPadding1D (None, 1123, 64)     0           embedding_4[0][0]                
+__________________________________________________________________________________________________
+zero_padding1d_8 (ZeroPadding1D (None, 1127, 64)     0           embedding_4[0][0]                
+__________________________________________________________________________________________________
+zero_padding1d_9 (ZeroPadding1D (None, 1272, 64)     0           embedding_5[0][0]                
+__________________________________________________________________________________________________
+zero_padding1d_10 (ZeroPadding1 (None, 1276, 64)     0           embedding_5[0][0]                
+__________________________________________________________________________________________________
+conv1d_1 (Conv1D)               (None, 1022, 16)     3088        zero_padding1d_1[0][0]           
+__________________________________________________________________________________________________
+conv1d_2 (Conv1D)               (None, 1026, 16)     5136        zero_padding1d_2[0][0]           
+__________________________________________________________________________________________________
+conv1d_3 (Conv1D)               (None, 1035, 16)     3088        zero_padding1d_3[0][0]           
+__________________________________________________________________________________________________
+conv1d_4 (Conv1D)               (None, 1039, 16)     5136        zero_padding1d_4[0][0]           
+__________________________________________________________________________________________________
+conv1d_5 (Conv1D)               (None, 1369, 16)     3088        zero_padding1d_5[0][0]           
+__________________________________________________________________________________________________
+conv1d_6 (Conv1D)               (None, 1373, 16)     5136        zero_padding1d_6[0][0]           
+__________________________________________________________________________________________________
+conv1d_7 (Conv1D)               (None, 1123, 16)     3088        zero_padding1d_7[0][0]           
+__________________________________________________________________________________________________
+conv1d_8 (Conv1D)               (None, 1127, 16)     5136        zero_padding1d_8[0][0]           
+__________________________________________________________________________________________________
+conv1d_9 (Conv1D)               (None, 1272, 16)     3088        zero_padding1d_9[0][0]           
+__________________________________________________________________________________________________
+conv1d_10 (Conv1D)              (None, 1276, 16)     5136        zero_padding1d_10[0][0]          
+__________________________________________________________________________________________________
+global_max_pooling1d_1 (GlobalM (None, 16)           0           conv1d_1[0][0]                   
+__________________________________________________________________________________________________
+global_max_pooling1d_2 (GlobalM (None, 16)           0           conv1d_2[0][0]                   
+__________________________________________________________________________________________________
+global_max_pooling1d_3 (GlobalM (None, 16)           0           conv1d_3[0][0]                   
+__________________________________________________________________________________________________
+global_max_pooling1d_4 (GlobalM (None, 16)           0           conv1d_4[0][0]                   
+__________________________________________________________________________________________________
+global_max_pooling1d_5 (GlobalM (None, 16)           0           conv1d_5[0][0]                   
+__________________________________________________________________________________________________
+global_max_pooling1d_6 (GlobalM (None, 16)           0           conv1d_6[0][0]                   
+__________________________________________________________________________________________________
+global_max_pooling1d_7 (GlobalM (None, 16)           0           conv1d_7[0][0]                   
+__________________________________________________________________________________________________
+global_max_pooling1d_8 (GlobalM (None, 16)           0           conv1d_8[0][0]                   
+__________________________________________________________________________________________________
+global_max_pooling1d_9 (GlobalM (None, 16)           0           conv1d_9[0][0]                   
+__________________________________________________________________________________________________
+global_max_pooling1d_10 (Global (None, 16)           0           conv1d_10[0][0]                  
+__________________________________________________________________________________________________
+concatenate_1 (Concatenate)     (None, 160)          0           global_max_pooling1d_1[0][0]     
+                                                                 global_max_pooling1d_2[0][0]     
+                                                                 global_max_pooling1d_3[0][0]     
+                                                                 global_max_pooling1d_4[0][0]     
+                                                                 global_max_pooling1d_5[0][0]     
+                                                                 global_max_pooling1d_6[0][0]     
+                                                                 global_max_pooling1d_7[0][0]     
+                                                                 global_max_pooling1d_8[0][0]     
+                                                                 global_max_pooling1d_9[0][0]     
+                                                                 global_max_pooling1d_10[0][0]    
+__________________________________________________________________________________________________
+embed_input (InputLayer)        (None, 600)          0                                            
+__________________________________________________________________________________________________
+concatenate_2 (Concatenate)     (None, 760)          0           concatenate_1[0][0]              
+                                                                 embed_input[0][0]                
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 128)          97408       concatenate_2[0][0]              
+__________________________________________________________________________________________________
+l_out (Dense)                   (None, 5)            645         dense_1[0][0]                    
+==================================================================================================
+Total params: 157,797
+Trainable params: 157,797
+Non-trainable params: 0
+__________________________________________________________________________________________________
+Training Configurations loaded
+Training the model
+no checkpoints available !
+Train on 48 samples, validate on 49 samples
+Epoch 1/15
+
+Epoch 00001: val_categorical_accuracy improved from -inf to 0.46939, saving model to results/vardial2018-completesample/multi_input/model_weights.hdf5
+
+48/48 [==============================] - 2s 40ms/step - loss: 3.9120 - categorical_accuracy: 0.1458 - val_loss: 3.6706 - val_categorical_accuracy: 0.4694
+Epoch 2/15
+
+Epoch 00002: val_categorical_accuracy did not improve
+
+48/48 [==============================] - 1s 21ms/step - loss: 3.5430 - categorical_accuracy: 0.7292 - val_loss: 3.5481 - val_categorical_accuracy: 0.3061
+Epoch 3/15
+
+Epoch 00003: val_categorical_accuracy did not improve
+
+48/48 [==============================] - 1s 21ms/step - loss: 3.2635 - categorical_accuracy: 0.8542 - val_loss: 3.4498 - val_categorical_accuracy: 0.3265
+Epoch 4/15
+
+Epoch 00004: val_categorical_accuracy did not improve
+
+48/48 [==============================] - 1s 21ms/step - loss: 3.0473 - categorical_accuracy: 0.8958 - val_loss: 3.3631 - val_categorical_accuracy: 0.3878
+Epoch 5/15
+
+Epoch 00005: val_categorical_accuracy did not improve
+
+48/48 [==============================] - 1s 21ms/step - loss: 2.8648 - categorical_accuracy: 0.9583 - val_loss: 3.2774 - val_categorical_accuracy: 0.4490
+Epoch 6/15
+
+Epoch 00006: val_categorical_accuracy improved from 0.46939 to 0.55102, saving model to results/vardial2018-completesample/multi_input/model_weights.hdf5
+
+48/48 [==============================] - 1s 21ms/step - loss: 2.7039 - categorical_accuracy: 1.0000 - val_loss: 3.1983 - val_categorical_accuracy: 0.5510
+Epoch 7/15
+
+Epoch 00007: val_categorical_accuracy improved from 0.55102 to 0.61224, saving model to results/vardial2018-completesample/multi_input/model_weights.hdf5
+
+48/48 [==============================] - 1s 23ms/step - loss: 2.5658 - categorical_accuracy: 1.0000 - val_loss: 3.1250 - val_categorical_accuracy: 0.6122
+Epoch 8/15
+
+Epoch 00008: val_categorical_accuracy did not improve
+
+48/48 [==============================] - 1s 21ms/step - loss: 2.4424 - categorical_accuracy: 1.0000 - val_loss: 3.0611 - val_categorical_accuracy: 0.5918
+Epoch 9/15
+
+Epoch 00009: val_categorical_accuracy did not improve
+
+48/48 [==============================] - 1s 24ms/step - loss: 2.3352 - categorical_accuracy: 1.0000 - val_loss: 3.0041 - val_categorical_accuracy: 0.6122
+Epoch 10/15
+
+Epoch 00010: val_categorical_accuracy did not improve
+
+48/48 [==============================] - 1s 21ms/step - loss: 2.2397 - categorical_accuracy: 1.0000 - val_loss: 2.9521 - val_categorical_accuracy: 0.6122
+Epoch 11/15
+
+Epoch 00011: val_categorical_accuracy improved from 0.61224 to 0.65306, saving model to results/vardial2018-completesample/multi_input/model_weights.hdf5
+
+48/48 [==============================] - 1s 22ms/step - loss: 2.1534 - categorical_accuracy: 1.0000 - val_loss: 2.9049 - val_categorical_accuracy: 0.6531
+Epoch 12/15
+
+Epoch 00012: val_categorical_accuracy did not improve
+
+48/48 [==============================] - 1s 21ms/step - loss: 2.0750 - categorical_accuracy: 1.0000 - val_loss: 2.8633 - val_categorical_accuracy: 0.6122
+Epoch 13/15
+
+Epoch 00013: val_categorical_accuracy did not improve
+
+48/48 [==============================] - 1s 22ms/step - loss: 2.0043 - categorical_accuracy: 1.0000 - val_loss: 2.8261 - val_categorical_accuracy: 0.6122
+Epoch 14/15
+
+Epoch 00014: val_categorical_accuracy did not improve
+
+48/48 [==============================] - 1s 20ms/step - loss: 1.9404 - categorical_accuracy: 1.0000 - val_loss: 2.7923 - val_categorical_accuracy: 0.6122
+Epoch 15/15
+
+Epoch 00015: val_categorical_accuracy did not improve
+
+48/48 [==============================] - 1s 20ms/step - loss: 1.8821 - categorical_accuracy: 1.0000 - val_loss: 2.7603 - val_categorical_accuracy: 0.5714
+
+Final evaluation
+
+f1_score
+ 0.5394733194733196
+accuracy_score
+ 0.5714285714285714
+
+classification_report
+              precision    recall  f1-score   support
+
+        EGY       0.67      0.29      0.40         7
+        GLF       0.80      0.50      0.62         8
+        LAV       0.52      0.86      0.65        14
+        MSA       0.64      0.78      0.70         9
+        NOR       0.43      0.27      0.33        11
+
+avg / total       0.59      0.57      0.55        49
+
+
+confusion_matrix
+ [[ 2  1  2  1  1]
+ [ 1  4  2  0  1]
+ [ 0  0 12  1  1]
+ [ 0  0  1  7  1]
+ [ 0  0  6  2  3]]
+
+Evaluation on best model
+
+f1_score
+ 0.6270387507229611
+accuracy_score
+ 0.6530612244897959
+
+classification_report
+              precision    recall  f1-score   support
+
+        EGY       0.67      0.57      0.62         7
+        GLF       0.60      0.38      0.46         8
+        LAV       0.67      0.86      0.75        14
+        MSA       0.70      0.78      0.74         9
+        NOR       0.60      0.55      0.57        11
+
+avg / total       0.65      0.65      0.64        49
+
+
+confusion_matrix
+ [[ 4  1  1  0  1]
+ [ 2  3  2  0  1]
+ [ 0  0 12  1  1]
+ [ 0  0  1  7  1]
+ [ 0  1  2  2  6]]
